@@ -1,0 +1,78 @@
+@import url("normalize.css");
+.body{
+}
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: azure;
+  width: 100%;
+  height: 100vh;
+}
+.mem-slider{
+  width: 68.75rem;
+  height: 35rem;
+  
+}
+.slides{
+  width: 400%;
+  height: 100%;
+  display: flex;
+}
+.slide{
+  width: 25%;
+  transition: all 0.5s ease 0s;
+}
+.slide img{
+  width: 100%;
+  height: 100%;
+}
+.dot{
+  width: 25px;
+  height: 25px;
+  border: 0.125rem solid black;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+}
+.dot:hover{
+  background-color: blue;
+  transform: scale(1.05);
+}
+.dot:active{
+  background-color: blue;
+  border: none;
+}
+input[name='ctrl']{
+  position: absolute;
+  visibility: hidden;
+}
+.mem-description{
+  display: flex;
+  justify-content: space-between;
+}
+.mem-text{
+  font-size: 2.5rem;
+
+}
+.navigation{
+  order: 2;
+  max-width: 20%;
+  display: flex;
+  background-color: azure;
+}
+#control1:checked ~ .first{
+  margin-left: 0;
+}
+#control2:checked ~ .first{
+  margin-left: -25%;
+}
+#control3:checked ~ .first{
+  margin-left: -50%;
+}
+#control4:checked ~ .first{
+  margin-left: -75%;
+}
