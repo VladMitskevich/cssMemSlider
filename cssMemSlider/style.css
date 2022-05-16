@@ -10,8 +10,8 @@ body{
   display: flex;
   flex-direction: column;
   background-color: azure;
-  max-width: 48rem;
-  max-height: 37rem;
+  max-width: 40rem;
+  max-height: 39rem;
   overflow: hidden;
 }
 
@@ -22,76 +22,100 @@ body{
 }
 .slide{
   width: 25%;
-  transition: all 0.5s ease 0s;
+  transition: all 0.7s ease 0s;
 }
 .slide img{
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-.dot{
+input[name='ctrl']{
+ display: none;
+}
+.label{
   width: 1.25rem;
   height: 1.25rem;
-  border: 0.125rem solid black;
-  border-radius: 50%;
+  border: 0.125rem solid transparent;
+  border-radius: 1.25rem;
   background-color: #fff;
   margin: 0.5rem;
   cursor: pointer;
-  transition: all 0.5s ease 0s;
+ 
+}
+.label div{
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 1rem;
+  border: 0.2em solid rgb(0, 149, 144);
+  background-color: rgb(0, 149, 144);
+  transition: all 0.7s ease 0s;
 }
 .label:hover{
-
   cursor: pointer;
 }
-.label:active .dot{
-  border: none;
-}
-.label:hover .dot{
+.label:hover div{
   background-color: blue;
   transform: scale(1.05);
 }
-
-input[name='ctrl']{
-  position: absolute;
-  visibility: hidden;
+.label:active div{
+  transform: scale(1.2);
 }
+#control1:checked ~ .mem-description .navigation .label:nth-child(1) > div,
+#control2:checked ~ .mem-description .navigation .label:nth-child(2) > div,
+#control3:checked ~ .mem-description .navigation .label:nth-child(3) > div,
+#control4:checked ~ .mem-description .navigation .label:nth-child(4) > div{
+  background-color: aquamarine;
+}
+
 .mem-description{
+  width: 100%;
+  height: 25%;
   display: flex;
   justify-content: space-between;
 }
+.all-text{
+  width: 47%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  font-size: 1.5rem;
+  
+}
 .mem-text{
-  font-size: 2.5rem;
+  min-width: 100%;
+  transition: all 0.8s ease 0s;
 }
 .navigation{
   margin-right: 0.125rem;
-  order: 2;
-  width: 9.375rem;
+  max-width: 9.375rem;
+  height: 100%;
   display: flex;
+  gap: 0.1em;
   background-color: azure;
 }
-#control1:checked ~ .first{
-  margin-left: 0;
+#control1:checked ~ .slides .slide{
+  transform: translateX(0);
 }
-#control2:checked ~ .first{
-  margin-left: -25%;
+#control2:checked ~ .slides .slide{
+  transform: translateX(-100%);
 }
-#control3:checked ~ .first{
-  margin-left: -50%;
+#control3:checked ~ .slides .slide{
+  transform: translateX(-200%);
 }
-#control4:checked ~ .first{
-  margin-left: -75%;
+#control4:checked ~ .slides .slide{
+  transform: translateX(-300% );
 }
-#control1:checked ~ .one{
-  margin-bottom: 0;
+#control1:checked ~ .mem-description .all-text .mem-text {
+  transform: translateX(0);
 }
-#control2:checked ~ .one{
-  margin-bottom: -25%;
+#control2:checked ~ .mem-description .all-text .mem-text {
+  transform: translateX(-100%);
 }
-#control3:checked ~ .one{
-  margin-bottom: -50%;
+#control3:checked ~ .mem-description .all-text .mem-text {
+  transform: translateX(-200%);
 }
-#control4:checked ~ .one{
-  margin-bottom: -75%;
+#control4:checked ~ .mem-description .all-text .mem-text {
+  transform: translateX(-300% );
 }
 
 @media (max-width: 26.563rem){
@@ -102,5 +126,8 @@ input[name='ctrl']{
     margin-top: 0.938rem;
     margin-bottom: 0.938rem;
     align-self: center;
+  }
+  .mem-text{
+    font-size: calc(0.625 + 2 * (768px - 320px) / (768 -320));
   }
 }
